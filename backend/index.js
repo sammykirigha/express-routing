@@ -76,6 +76,14 @@ app.post('/', function (req, res){
     return res.send(todos);
 })
 
+app.put('/:id', (req, res) => {
+   return res.send(todos)
+})
+
+app.delete('/:id', function (req, res) {
+    return;
+})
+
 app.get('/another', function (req, res){
     return res.send('another')
 })
