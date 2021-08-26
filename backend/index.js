@@ -77,11 +77,26 @@ app.post('/', function (req, res){
 })
 
 app.put('/:id', (req, res) => {
-   return res.send(todos)
+    const items = req.body;
+    const id = parseInt(req.params.id)
+    todos.items = todos.items.map(item => {
+        if (item.id === id) {
+            return items
+        }
+        return item
+    });
+
+    res.send(todos)
+    
 })
 
 app.delete('/:id', function (req, res) {
-    return;
+    const items = req.body;
+    const id = parseInt(req.params.id)
+    todos.items = todos.items.filter(item => item.id !== id);
+
+    res.send(todos)
+    
 })
 
 app.get('/another', function (req, res){
